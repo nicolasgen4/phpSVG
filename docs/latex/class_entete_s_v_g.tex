@@ -1,0 +1,260 @@
+\doxysection{Référence de la classe Entete\+SVG}
+\label{class_entete_s_v_g}\index{EnteteSVG@{EnteteSVG}}
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ \+\_\+\+\_\+construct} (string \$svg)
+\item 
+\textbf{ nettoyer\+Entete} ()
+\item 
+\textbf{ definir\+Une\+Classe} (string \$classe)
+\item 
+\textbf{ ajouter\+Une\+Classe} (string \$classe)
+\item 
+\textbf{ definir\+Un\+Id} (string \$id)
+\item 
+\textbf{ definir\+Une\+Couleur} (string \$couleur)
+\item 
+\textbf{ redimensionner} (string \$largeur, string \$hauteur)
+\item 
+\textbf{ definir\+Title} (string \$title)
+\item 
+\textbf{ rendre} ()
+\item 
+\textbf{ enregistrer} (string \$path)
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions membres publiques statiques}
+\begin{DoxyCompactItemize}
+\item 
+static \textbf{ retourner\+Directement} (string \$svg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+permet de manipuler l\textquotesingle{}entete d\textquotesingle{}un SVG et de l\textquotesingle{}afficher \begin{DoxyAuthor}{Auteur}
+David LEGRAND {\texttt{ wawawaformation@gmail.\+com}} @license GPL 
+\end{DoxyAuthor}
+
+
+Définition à la ligne \textbf{ 7} du fichier \textbf{ Entete\+SVG.\+php}.
+
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\label{class_entete_s_v_g_a007fb18d698676f5965f287d2047443d}} 
+\index{EnteteSVG@{EnteteSVG}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{\_\_construct()}
+{\footnotesize\ttfamily \+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{string}]{\$svg }\end{DoxyParamCaption})}
+
+\+\_\+\+\_\+construct \+: instancie la class \doxyref{Entete\+SVG}{p.}{class_entete_s_v_g}
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$svg} & \+: fichier svg \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne \textbf{ 91} du fichier \textbf{ Entete\+SVG.\+php}.
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\label{class_entete_s_v_g_a473473c4ba09200418f0d79c58b71e59}} 
+\index{EnteteSVG@{EnteteSVG}!ajouterUneClasse@{ajouterUneClasse}}
+\index{ajouterUneClasse@{ajouterUneClasse}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{ajouterUneClasse()}
+{\footnotesize\ttfamily ajouter\+Une\+Classe (\begin{DoxyParamCaption}\item[{string}]{\$classe }\end{DoxyParamCaption})}
+
+definir\+Une\+Classe \+: ajoute une classe aux classes existantes pour la balise $<$svg$>$
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$classe} & \+: valeur de la classe à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 162} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_ac2ce588194922ed23f34d13691a935ab}} 
+\index{EnteteSVG@{EnteteSVG}!definirTitle@{definirTitle}}
+\index{definirTitle@{definirTitle}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{definirTitle()}
+{\footnotesize\ttfamily definir\+Title (\begin{DoxyParamCaption}\item[{string}]{\$title }\end{DoxyParamCaption})}
+
+definir\+Title \+: definir un attribut title
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$title} & \+: valeur de l\textquotesingle{}attribut title \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 210} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_a07219cb3e18b8977f0afbb1702ca69d9}} 
+\index{EnteteSVG@{EnteteSVG}!definirUneClasse@{definirUneClasse}}
+\index{definirUneClasse@{definirUneClasse}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{definirUneClasse()}
+{\footnotesize\ttfamily definir\+Une\+Classe (\begin{DoxyParamCaption}\item[{string}]{\$classe }\end{DoxyParamCaption})}
+
+definir\+Une\+Classe \+: definit l\textquotesingle{}attribut classe de la balise $<$svg$>$ (ecrase les classes existantes)
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$classe} & \+: valeur de la classe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 151} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_a4151f45990d8ef8eccaf048bb66139f8}} 
+\index{EnteteSVG@{EnteteSVG}!definirUneCouleur@{definirUneCouleur}}
+\index{definirUneCouleur@{definirUneCouleur}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{definirUneCouleur()}
+{\footnotesize\ttfamily definir\+Une\+Couleur (\begin{DoxyParamCaption}\item[{string}]{\$couleur }\end{DoxyParamCaption})}
+
+definir\+Une\+Couleur \+: definit une couleur pour la balise $<$svg$>$
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$couleur} & \+: la couleur (type HTML) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 184} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_a280361bf659d2246343cc5df7ac840f8}} 
+\index{EnteteSVG@{EnteteSVG}!definirUnId@{definirUnId}}
+\index{definirUnId@{definirUnId}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{definirUnId()}
+{\footnotesize\ttfamily definir\+Un\+Id (\begin{DoxyParamCaption}\item[{string}]{\$id }\end{DoxyParamCaption})}
+
+definir\+Un\+Id \+: definit un id pour la balise $<$svg$>$
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$id} & \+: valeur de l\textquotesingle{}id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 173} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_aa7ea2352bfde77565eb09c7368cb1632}} 
+\index{EnteteSVG@{EnteteSVG}!enregistrer@{enregistrer}}
+\index{enregistrer@{enregistrer}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{enregistrer()}
+{\footnotesize\ttfamily enregistrer (\begin{DoxyParamCaption}\item[{string}]{\$path }\end{DoxyParamCaption})}
+
+Enregistrer \+: enregistre le svg dans un fichier
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 240} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_a49c9d3535abce44d6fdb2a4636513d78}} 
+\index{EnteteSVG@{EnteteSVG}!nettoyerEntete@{nettoyerEntete}}
+\index{nettoyerEntete@{nettoyerEntete}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{nettoyerEntete()}
+{\footnotesize\ttfamily nettoyer\+Entete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+nettoyer\+Entete \+: enleve tous les attributs (sauf le view\+Box) de la balise $<$svg$>$
+
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 138} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_a6cfaf5051441fab986f39ff0dddfec4e}} 
+\index{EnteteSVG@{EnteteSVG}!redimensionner@{redimensionner}}
+\index{redimensionner@{redimensionner}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{redimensionner()}
+{\footnotesize\ttfamily redimensionner (\begin{DoxyParamCaption}\item[{string}]{\$largeur,  }\item[{string}]{\$hauteur }\end{DoxyParamCaption})}
+
+redimensionner \+: ajoute l\textquotesingle{}attribut height et width à la balise $<$svg$>$
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$largeur} & \\
+\hline
+string & {\em \$hauteur} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 197} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_aa69100fd9d524098ff3d5a366ef710ed}} 
+\index{EnteteSVG@{EnteteSVG}!rendre@{rendre}}
+\index{rendre@{rendre}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{rendre()}
+{\footnotesize\ttfamily rendre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+rendre \+: retourne le contenu du svg
+
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 220} du fichier \textbf{ Entete\+SVG.\+php}.
+
+\mbox{\label{class_entete_s_v_g_a938a45b369085a74e73840ffed9a94ef}} 
+\index{EnteteSVG@{EnteteSVG}!retournerDirectement@{retournerDirectement}}
+\index{retournerDirectement@{retournerDirectement}!EnteteSVG@{EnteteSVG}}
+\doxysubsubsection{retournerDirectement()}
+{\footnotesize\ttfamily static retourner\+Directement (\begin{DoxyParamCaption}\item[{string}]{\$svg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+retourner\+Directement \+: retourne le contenu du fichier SVG sans modif
+
+
+\begin{DoxyParams}[1]{Paramètres}
+string & {\em \$svg} & \+: fichier svg \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+string \$svg \+: le contenu du fichier svg 
+\end{DoxyReturn}
+
+
+Définition à la ligne \textbf{ 128} du fichier \textbf{ Entete\+SVG.\+php}.
+
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+src/\textbf{ Entete\+SVG.\+php}\end{DoxyCompactItemize}

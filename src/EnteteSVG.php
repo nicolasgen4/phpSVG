@@ -199,6 +199,18 @@ class EnteteSVG{
         if(!is_null($hauteur)) $this->definirAttribut('width', $largeur);
     }
 
+
+
+    /**
+     * definirTitle : definir un attribut title
+     *
+     * @param string $title : valeur de l'attribut title
+     * @return void
+     */
+    public function definirTitle(string $title){
+        $this->definirAttribut('title', $title);
+    }
+
     
     /**
      * rendre : retourne le contenu du svg

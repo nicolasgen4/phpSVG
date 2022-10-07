@@ -1,0 +1,148 @@
+\doxysection{Entete\+SVG.\+php}
+\label{_entete_s_v_g_8php_source}\index{src/EnteteSVG.php@{src/EnteteSVG.php}}
+\textbf{ Aller à la documentation de ce fichier.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 <?php}
+\DoxyCodeLine{00007 \textcolor{keyword}{class }EnteteSVG\{}
+\DoxyCodeLine{00011     \textcolor{keyword}{private} \$svg;}
+\DoxyCodeLine{00015     \textcolor{keyword}{private} \$attributs;}
+\DoxyCodeLine{00019     \textcolor{keyword}{private} \$contenu;}
+\DoxyCodeLine{00020    }
+\DoxyCodeLine{00021    }
+\DoxyCodeLine{00022     }
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00030     \textcolor{keyword}{private} \textcolor{keyword}{static} \textcolor{keyword}{function} verifier(\textcolor{keywordtype}{string} \$svg)}
+\DoxyCodeLine{00031     \{}
+\DoxyCodeLine{00032        }
+\DoxyCodeLine{00033         \textcolor{keywordflow}{if}(!file\_exists(\$svg))\{}
+\DoxyCodeLine{00034             die(\textcolor{stringliteral}{'Ressource non trouvée: '} . \$svg);}
+\DoxyCodeLine{00035             }
+\DoxyCodeLine{00036         \} }
+\DoxyCodeLine{00037         }
+\DoxyCodeLine{00038         \textcolor{keywordflow}{if}(strpos(mime\_content\_type(\$svg),\textcolor{stringliteral}{'image/svg'}))\{}
+\DoxyCodeLine{00039             die(\textcolor{stringliteral}{'Ce n\(\backslash\)'est pas un SVG: '} . \$svg );}
+\DoxyCodeLine{00040         }
+\DoxyCodeLine{00041         \}}
+\DoxyCodeLine{00042       }
+\DoxyCodeLine{00043     \}}
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{00051     \textcolor{keyword}{private} \textcolor{keyword}{function} retournerAttributs(\textcolor{keywordtype}{string} \$attribut = \textcolor{keyword}{null})\{}
+\DoxyCodeLine{00052         \textcolor{keywordflow}{return} (is\_null(\$attribut)) ? get\_object\_vars(\$this-\/>attributs) : \$this-\/>attributs-\/>\$attribut;}
+\DoxyCodeLine{00053       }
+\DoxyCodeLine{00054      \}}
+\DoxyCodeLine{00062     \textcolor{keyword}{private} \textcolor{keyword}{function} definirAttribut(\textcolor{keywordtype}{string} \$attribut, \textcolor{keywordtype}{string} \$valeur)\{}
+\DoxyCodeLine{00063         \$this-\/>attributs-\/>\$attribut = \$valeur;}
+\DoxyCodeLine{00064      \}}
+\DoxyCodeLine{00065      }
+\DoxyCodeLine{00072     \textcolor{keyword}{private} \textcolor{keyword}{function} supprimerAttribut(\textcolor{keywordtype}{string} \$attribut)\{}
+\DoxyCodeLine{00073         \textcolor{keywordflow}{if}(!is\_null(\$this-\/>attributs-\/>\$attribut)) unset(\$this-\/>attributs-\/>\$attribut);}
+\DoxyCodeLine{00074     \}}
+\DoxyCodeLine{00075 }
+\DoxyCodeLine{00076 }
+\DoxyCodeLine{00077  }
+\DoxyCodeLine{00078     }
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00080 }
+\DoxyCodeLine{00081     \textcolor{comment}{/*======================================================================}}
+\DoxyCodeLine{00082 \textcolor{comment}{                                 API}}
+\DoxyCodeLine{00083 \textcolor{comment}{    =====================================================================*/}}
+\DoxyCodeLine{00084     }
+\DoxyCodeLine{00085     }
+\DoxyCodeLine{00091     \textcolor{keyword}{public} \textcolor{keyword}{function} \_\_construct(\textcolor{keywordtype}{string} \$svg)}
+\DoxyCodeLine{00092     \{ }
+\DoxyCodeLine{00093         \$svg = self::retournerDirectement(\$svg);}
+\DoxyCodeLine{00094 }
+\DoxyCodeLine{00095         \textcolor{comment}{//les attributs de la balise svg sont stockés dans \$this-\/attributes }}
+\DoxyCodeLine{00096         \$this-\/>svg = \textcolor{keyword}{new} SimpleXMLElement(\$svg);}
+\DoxyCodeLine{00097         \textcolor{keywordflow}{foreach}(\$this-\/>svg-\/>attributes() as \$clef=>\$valeur)\{     }
+\DoxyCodeLine{00098             \$attributs[\$clef] = \$valeur-\/>\_\_toString();}
+\DoxyCodeLine{00099         \}}
+\DoxyCodeLine{00100         \$this-\/>attributs = (object) \$attributs;}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102 }
+\DoxyCodeLine{00103 }
+\DoxyCodeLine{00104         \textcolor{comment}{//On recupere le contenu du svg dans un type text (à venir : on parse avec SimpleXMLElement)}}
+\DoxyCodeLine{00105         \$svg = str\_ireplace(\textcolor{stringliteral}{'</svg>'},\textcolor{stringliteral}{''},\$svg);}
+\DoxyCodeLine{00106 }
+\DoxyCodeLine{00107         \$i = 0;}
+\DoxyCodeLine{00108         \$sous\_chaine=\textcolor{stringliteral}{''};}
+\DoxyCodeLine{00109         \textcolor{keywordflow}{while}(\textcolor{keyword}{true})\{}
+\DoxyCodeLine{00110             \$c = \$svg[\$i];}
+\DoxyCodeLine{00111             \$sous\_chaine .= \$c;}
+\DoxyCodeLine{00112             \textcolor{keywordflow}{if}(\$c == \textcolor{charliteral}{'>'}) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00113             \$i++;}
+\DoxyCodeLine{00114         \}}
+\DoxyCodeLine{00115         \$this-\/>contenu = str\_ireplace(\$sous\_chaine,\textcolor{stringliteral}{''},\$svg);}
+\DoxyCodeLine{00116         }
+\DoxyCodeLine{00117       }
+\DoxyCodeLine{00118       }
+\DoxyCodeLine{00119     \}}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121 }
+\DoxyCodeLine{00128     \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keyword}{function} retournerDirectement(\textcolor{keywordtype}{string} \$svg)\{}
+\DoxyCodeLine{00129         self::verifier(\$svg);}
+\DoxyCodeLine{00130         \textcolor{keywordflow}{return} file\_get\_contents(\$svg);}
+\DoxyCodeLine{00131     \}}
+\DoxyCodeLine{00132 }
+\DoxyCodeLine{00138     \textcolor{keyword}{public} \textcolor{keyword}{function} nettoyerEntete()\{}
+\DoxyCodeLine{00139         \textcolor{keywordflow}{foreach}(\$this-\/>retournerAttributs() as \$clef=>\$valeur)\{}
+\DoxyCodeLine{00140             \textcolor{keywordflow}{if}(\$clef != \textcolor{stringliteral}{'viewBox'}) unset(\$this-\/>attributs-\/>\$clef);    }
+\DoxyCodeLine{00141         \}}
+\DoxyCodeLine{00142         }
+\DoxyCodeLine{00143     \}}
+\DoxyCodeLine{00144 }
+\DoxyCodeLine{00151     \textcolor{keyword}{public} \textcolor{keyword}{function} definirUneClasse(\textcolor{keywordtype}{string} \$classe)\{}
+\DoxyCodeLine{00152         \$this-\/>definirAttribut(\textcolor{stringliteral}{'class'}, \$classe);}
+\DoxyCodeLine{00153     \}}
+\DoxyCodeLine{00154 }
+\DoxyCodeLine{00155 }
+\DoxyCodeLine{00162     \textcolor{keyword}{public} \textcolor{keyword}{function} ajouterUneClasse(\textcolor{keywordtype}{string} \$classe)\{}
+\DoxyCodeLine{00163         \$this-\/>definirAttribut(\textcolor{stringliteral}{'class'}, \$this-\/>retournerAttributs(\textcolor{stringliteral}{'class'}) . \textcolor{charliteral}{' '} . \$classe);}
+\DoxyCodeLine{00164     \}}
+\DoxyCodeLine{00165 }
+\DoxyCodeLine{00166 }
+\DoxyCodeLine{00173     \textcolor{keyword}{public} \textcolor{keyword}{function} definirUnId(\textcolor{keywordtype}{string} \$id)\{}
+\DoxyCodeLine{00174         \$this-\/>definirAttribut(\textcolor{stringliteral}{'id'},\$id);}
+\DoxyCodeLine{00175     \}}
+\DoxyCodeLine{00176 }
+\DoxyCodeLine{00177 }
+\DoxyCodeLine{00184     \textcolor{keyword}{public} \textcolor{keyword}{function} definirUneCouleur(\textcolor{keywordtype}{string} \$couleur)\{}
+\DoxyCodeLine{00185         \textcolor{comment}{//il faudra mettre un garde-\/fou pour \$couleur}}
+\DoxyCodeLine{00186         \$this-\/>definirAttribut(\textcolor{stringliteral}{'fill'}, \$couleur);}
+\DoxyCodeLine{00187     \}}
+\DoxyCodeLine{00188 }
+\DoxyCodeLine{00189 }
+\DoxyCodeLine{00197     \textcolor{keyword}{public} \textcolor{keyword}{function} redimensionner(\textcolor{keywordtype}{string} \$largeur, \textcolor{keywordtype}{string} \$hauteur)\{}
+\DoxyCodeLine{00198         \textcolor{keywordflow}{if}(!is\_null(\$hauteur)) \$this-\/>definirAttribut(\textcolor{stringliteral}{'height'}, \$hauteur);}
+\DoxyCodeLine{00199         \textcolor{keywordflow}{if}(!is\_null(\$hauteur)) \$this-\/>definirAttribut(\textcolor{stringliteral}{'width'}, \$largeur);}
+\DoxyCodeLine{00200     \}}
+\DoxyCodeLine{00201 }
+\DoxyCodeLine{00202 }
+\DoxyCodeLine{00203 }
+\DoxyCodeLine{00210     \textcolor{keyword}{public} \textcolor{keyword}{function} definirTitle(\textcolor{keywordtype}{string} \$title)\{}
+\DoxyCodeLine{00211         \$this-\/>definirAttribut(\textcolor{stringliteral}{'title'}, \$title);}
+\DoxyCodeLine{00212     \}}
+\DoxyCodeLine{00213 }
+\DoxyCodeLine{00214     }
+\DoxyCodeLine{00220     \textcolor{keyword}{public} \textcolor{keyword}{function} rendre()\{}
+\DoxyCodeLine{00221         \$svg = \textcolor{stringliteral}{'<svg'} ;}
+\DoxyCodeLine{00222         \textcolor{keywordflow}{foreach}(\$this-\/>retournerAttributs() as \$clef=>\$valeur)\{}
+\DoxyCodeLine{00223             \$svg .= \textcolor{charliteral}{' '} . \$clef . \textcolor{stringliteral}{'="{}'} . \$valeur . \textcolor{charliteral}{'"{}'};}
+\DoxyCodeLine{00224         \}}
+\DoxyCodeLine{00225         \$svg .= \textcolor{stringliteral}{' xmlns="{}http://www.w3.org/2000/svg"{}>'};}
+\DoxyCodeLine{00226         \$svg .=\$this-\/>contenu;}
+\DoxyCodeLine{00227         \$svg .= \textcolor{stringliteral}{'</svg>'};}
+\DoxyCodeLine{00228 }
+\DoxyCodeLine{00229         \textcolor{keywordflow}{return} \$svg;}
+\DoxyCodeLine{00230        }
+\DoxyCodeLine{00231     \}}
+\DoxyCodeLine{00232 }
+\DoxyCodeLine{00233     }
+\DoxyCodeLine{00240     \textcolor{keyword}{public} \textcolor{keyword}{function} enregistrer(\textcolor{keywordtype}{string} \$path)\{}
+\DoxyCodeLine{00241         \textcolor{comment}{//il faudra verifier le path (le chemin existe?, on a les droits? etc)}}
+\DoxyCodeLine{00242         \$svg = \$this-\/>rendre();}
+\DoxyCodeLine{00243         file\_put\_contents(\$path, \$svg);}
+\DoxyCodeLine{00244     \}}
+\DoxyCodeLine{00245 \}}
+
+\end{DoxyCode}

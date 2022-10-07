@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>phpSVG:  Fichier source de src/EnteteSVG.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">phpSVG<span id="projectnumber">&#160;0.1</span>
+   </div>
+   <div id="projectbrief">Permet de modifier l&#39;entete d&#39;un SVG puis/ou d&#39;en retourner le code</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.5 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Recherche');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">EnteteSVG.php</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_entete_s_v_g_8php.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>&lt;?php</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="class_entete_s_v_g.html">EnteteSVG</a>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">private</span> $svg;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">private</span> $attributs;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">private</span> $contenu;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>   </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>   </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">function</span> verifier(<span class="keywordtype">string</span> $svg)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>       </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">if</span>(!file_exists($svg)){</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            die(<span class="stringliteral">&#39;Ressource non trouvée: &#39;</span> . $svg);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        } </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">if</span>(strpos(mime_content_type($svg),<span class="stringliteral">&#39;image/svg&#39;</span>)){</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            die(<span class="stringliteral">&#39;Ce n\&#39;est pas un SVG: &#39;</span> . $svg );</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">private</span> <span class="keyword">function</span> retournerAttributs(<span class="keywordtype">string</span> $attribut = <span class="keyword">null</span>){</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span> (is_null($attribut)) ? get_object_vars($this-&gt;attributs) : $this-&gt;attributs-&gt;$attribut;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>     }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">private</span> <span class="keyword">function</span> definirAttribut(<span class="keywordtype">string</span> $attribut, <span class="keywordtype">string</span> $valeur){</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        $this-&gt;attributs-&gt;$attribut = $valeur;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>     }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>     </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">private</span> <span class="keyword">function</span> supprimerAttribut(<span class="keywordtype">string</span> $attribut){</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">if</span>(!is_null($this-&gt;attributs-&gt;$attribut)) unset($this-&gt;attributs-&gt;$attribut);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">/*======================================================================</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">                                 API</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">    =====================================================================*/</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a007fb18d698676f5965f287d2047443d">   91</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a007fb18d698676f5965f287d2047443d">__construct</a>(<span class="keywordtype">string</span> $svg)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    { </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        $svg = <a class="code hl_function" href="class_entete_s_v_g.html#a938a45b369085a74e73840ffed9a94ef">self::retournerDirectement</a>($svg);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="comment">//les attributs de la balise svg sont stockés dans $this-attributes </span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        $this-&gt;svg = <span class="keyword">new</span> SimpleXMLElement($svg);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">foreach</span>($this-&gt;svg-&gt;attributes() as $clef=&gt;$valeur){     </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            $attributs[$clef] = $valeur-&gt;__toString();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        $this-&gt;attributs = (object) $attributs;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="comment">//On recupere le contenu du svg dans un type text (à venir : on parse avec SimpleXMLElement)</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        $svg = str_ireplace(<span class="stringliteral">&#39;&lt;/svg&gt;&#39;</span>,<span class="stringliteral">&#39;&#39;</span>,$svg);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        $i = 0;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        $sous_chaine=<span class="stringliteral">&#39;&#39;</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">while</span>(<span class="keyword">true</span>){</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            $c = $svg[$i];</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            $sous_chaine .= $c;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <span class="keywordflow">if</span>($c == <span class="charliteral">&#39;&gt;&#39;</span>) <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            $i++;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        $this-&gt;contenu = str_ireplace($sous_chaine,<span class="stringliteral">&#39;&#39;</span>,$svg);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>      </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>      </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a938a45b369085a74e73840ffed9a94ef">  128</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a938a45b369085a74e73840ffed9a94ef">retournerDirectement</a>(<span class="keywordtype">string</span> $svg){</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        self::verifier($svg);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">return</span> file_get_contents($svg);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a49c9d3535abce44d6fdb2a4636513d78">  138</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a49c9d3535abce44d6fdb2a4636513d78">nettoyerEntete</a>(){</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">foreach</span>($this-&gt;retournerAttributs() as $clef=&gt;$valeur){</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            <span class="keywordflow">if</span>($clef != <span class="stringliteral">&#39;viewBox&#39;</span>) unset($this-&gt;attributs-&gt;$clef);    </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a07219cb3e18b8977f0afbb1702ca69d9">  151</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a07219cb3e18b8977f0afbb1702ca69d9">definirUneClasse</a>(<span class="keywordtype">string</span> $classe){</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        $this-&gt;definirAttribut(<span class="stringliteral">&#39;class&#39;</span>, $classe);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a473473c4ba09200418f0d79c58b71e59">  162</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a473473c4ba09200418f0d79c58b71e59">ajouterUneClasse</a>(<span class="keywordtype">string</span> $classe){</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        $this-&gt;definirAttribut(<span class="stringliteral">&#39;class&#39;</span>, $this-&gt;retournerAttributs(<span class="stringliteral">&#39;class&#39;</span>) . <span class="charliteral">&#39; &#39;</span> . $classe);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    }</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a280361bf659d2246343cc5df7ac840f8">  173</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a280361bf659d2246343cc5df7ac840f8">definirUnId</a>(<span class="keywordtype">string</span> $id){</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        $this-&gt;definirAttribut(<span class="stringliteral">&#39;id&#39;</span>,$id);</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a4151f45990d8ef8eccaf048bb66139f8">  184</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a4151f45990d8ef8eccaf048bb66139f8">definirUneCouleur</a>(<span class="keywordtype">string</span> $couleur){</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="comment">//il faudra mettre un garde-fou pour $couleur</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        $this-&gt;definirAttribut(<span class="stringliteral">&#39;fill&#39;</span>, $couleur);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#a6cfaf5051441fab986f39ff0dddfec4e">  197</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#a6cfaf5051441fab986f39ff0dddfec4e">redimensionner</a>(<span class="keywordtype">string</span> $largeur, <span class="keywordtype">string</span> $hauteur){</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keywordflow">if</span>(!is_null($hauteur)) $this-&gt;definirAttribut(<span class="stringliteral">&#39;height&#39;</span>, $hauteur);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <span class="keywordflow">if</span>(!is_null($hauteur)) $this-&gt;definirAttribut(<span class="stringliteral">&#39;width&#39;</span>, $largeur);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#ac2ce588194922ed23f34d13691a935ab">  210</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#ac2ce588194922ed23f34d13691a935ab">definirTitle</a>(<span class="keywordtype">string</span> $title){</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        $this-&gt;definirAttribut(<span class="stringliteral">&#39;title&#39;</span>, $title);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    }</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#aa69100fd9d524098ff3d5a366ef710ed">  220</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#aa69100fd9d524098ff3d5a366ef710ed">rendre</a>(){</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        $svg = <span class="stringliteral">&#39;&lt;svg&#39;</span> ;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordflow">foreach</span>($this-&gt;retournerAttributs() as $clef=&gt;$valeur){</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            $svg .= <span class="charliteral">&#39; &#39;</span> . $clef . <span class="stringliteral">&#39;=&quot;&#39;</span> . $valeur . <span class="charliteral">&#39;&quot;&#39;</span>;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        }</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        $svg .= <span class="stringliteral">&#39; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;&#39;</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        $svg .=$this-&gt;contenu;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        $svg .= <span class="stringliteral">&#39;&lt;/svg&gt;&#39;</span>;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="keywordflow">return</span> $svg;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>       </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    }</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="class_entete_s_v_g.html#aa7ea2352bfde77565eb09c7368cb1632">  240</a></span>    <span class="keyword">public</span> <span class="keyword">function</span> <a class="code hl_function" href="class_entete_s_v_g.html#aa7ea2352bfde77565eb09c7368cb1632">enregistrer</a>(<span class="keywordtype">string</span> $path){</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="comment">//il faudra verifier le path (le chemin existe?, on a les droits? etc)</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        $svg = $this-&gt;<a class="code hl_function" href="class_entete_s_v_g.html#aa69100fd9d524098ff3d5a366ef710ed">rendre</a>();</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        file_put_contents($path, $svg);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>}</div>
+<div class="ttc" id="aclass_entete_s_v_g_html"><div class="ttname"><a href="class_entete_s_v_g.html">EnteteSVG</a></div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00007">EnteteSVG.php:7</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a007fb18d698676f5965f287d2047443d"><div class="ttname"><a href="class_entete_s_v_g.html#a007fb18d698676f5965f287d2047443d">EnteteSVG\__construct</a></div><div class="ttdeci">__construct(string $svg)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00091">EnteteSVG.php:91</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a07219cb3e18b8977f0afbb1702ca69d9"><div class="ttname"><a href="class_entete_s_v_g.html#a07219cb3e18b8977f0afbb1702ca69d9">EnteteSVG\definirUneClasse</a></div><div class="ttdeci">definirUneClasse(string $classe)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00151">EnteteSVG.php:151</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a280361bf659d2246343cc5df7ac840f8"><div class="ttname"><a href="class_entete_s_v_g.html#a280361bf659d2246343cc5df7ac840f8">EnteteSVG\definirUnId</a></div><div class="ttdeci">definirUnId(string $id)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00173">EnteteSVG.php:173</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a4151f45990d8ef8eccaf048bb66139f8"><div class="ttname"><a href="class_entete_s_v_g.html#a4151f45990d8ef8eccaf048bb66139f8">EnteteSVG\definirUneCouleur</a></div><div class="ttdeci">definirUneCouleur(string $couleur)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00184">EnteteSVG.php:184</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a473473c4ba09200418f0d79c58b71e59"><div class="ttname"><a href="class_entete_s_v_g.html#a473473c4ba09200418f0d79c58b71e59">EnteteSVG\ajouterUneClasse</a></div><div class="ttdeci">ajouterUneClasse(string $classe)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00162">EnteteSVG.php:162</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a49c9d3535abce44d6fdb2a4636513d78"><div class="ttname"><a href="class_entete_s_v_g.html#a49c9d3535abce44d6fdb2a4636513d78">EnteteSVG\nettoyerEntete</a></div><div class="ttdeci">nettoyerEntete()</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00138">EnteteSVG.php:138</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a6cfaf5051441fab986f39ff0dddfec4e"><div class="ttname"><a href="class_entete_s_v_g.html#a6cfaf5051441fab986f39ff0dddfec4e">EnteteSVG\redimensionner</a></div><div class="ttdeci">redimensionner(string $largeur, string $hauteur)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00197">EnteteSVG.php:197</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_a938a45b369085a74e73840ffed9a94ef"><div class="ttname"><a href="class_entete_s_v_g.html#a938a45b369085a74e73840ffed9a94ef">EnteteSVG\retournerDirectement</a></div><div class="ttdeci">static retournerDirectement(string $svg)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00128">EnteteSVG.php:128</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_aa69100fd9d524098ff3d5a366ef710ed"><div class="ttname"><a href="class_entete_s_v_g.html#aa69100fd9d524098ff3d5a366ef710ed">EnteteSVG\rendre</a></div><div class="ttdeci">rendre()</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00220">EnteteSVG.php:220</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_aa7ea2352bfde77565eb09c7368cb1632"><div class="ttname"><a href="class_entete_s_v_g.html#aa7ea2352bfde77565eb09c7368cb1632">EnteteSVG\enregistrer</a></div><div class="ttdeci">enregistrer(string $path)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00240">EnteteSVG.php:240</a></div></div>
+<div class="ttc" id="aclass_entete_s_v_g_html_ac2ce588194922ed23f34d13691a935ab"><div class="ttname"><a href="class_entete_s_v_g.html#ac2ce588194922ed23f34d13691a935ab">EnteteSVG\definirTitle</a></div><div class="ttdeci">definirTitle(string $title)</div><div class="ttdef"><b>Definition:</b> <a href="_entete_s_v_g_8php_source.html#l00210">EnteteSVG.php:210</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>
